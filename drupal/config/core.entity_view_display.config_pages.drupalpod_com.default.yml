@@ -1,0 +1,21 @@
+uuid: bbed49e4-0f9f-4a11-bc2a-38da6b6bb36d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.field.config_pages.drupalpod_com.field_site_name
+id: config_pages.drupalpod_com.default
+targetEntityType: config_pages
+bundle: drupalpod_com
+mode: default
+content:
+  field_site_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

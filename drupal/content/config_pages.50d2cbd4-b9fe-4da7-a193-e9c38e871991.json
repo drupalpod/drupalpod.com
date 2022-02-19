@@ -1,0 +1,35 @@
+{
+    "uuid": [
+        {
+            "value": "50d2cbd4-b9fe-4da7-a193-e9c38e871991"
+        }
+    ],
+    "label": [
+        {
+            "value": "drupalpod_com"
+        }
+    ],
+    "type": [
+        {
+            "target_id": "drupalpod_com",
+            "target_type": "config_pages_type",
+            "target_uuid": "147176ca-47de-4d79-93af-00fdf6f2cb48"
+        }
+    ],
+    "context": [
+        {
+            "value": "a:0:{}"
+        }
+    ],
+    "changed": [
+        {
+            "value": "2022-02-19T05:54:15+00:00",
+            "format": "Y-m-d\\TH:i:sP"
+        }
+    ],
+    "field_site_name": [
+        {
+            "value": "DrupalPod"
+        }
+    ]
+}

@@ -1,0 +1,21 @@
+uuid: c5e95480-0812-4451-b6d7-c190d1ab4be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.storage.config_pages.field_site_name
+id: config_pages.drupalpod_com.field_site_name
+field_name: field_site_name
+entity_type: config_pages
+bundle: drupalpod_com
+label: 'Site name'
+description: 'The site name for the druxt frontend.'
+required: true
+translatable: false
+default_value:
+  -
+    value: DrupalPod
+default_value_callback: ''
+settings: {  }
+field_type: string
