@@ -41,12 +41,12 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
+    '@nuxtjs/tailwindcss',
+    'druxt-site'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [
-    'druxt-site',
-  ],
+  modules: [],
 
   // DruxtJS: https://druxtjs.org
   druxt: {
