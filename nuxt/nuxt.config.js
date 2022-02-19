@@ -42,7 +42,8 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     '@nuxtjs/tailwindcss',
-    'druxt-site'
+    'druxt-site',
+    '~/modules/drupalorg'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -58,7 +59,7 @@ export default {
     // Disable the router middleware (redirect support) in favour of serverless.
     router: { middleware: false },
     // Set the default theme to render Site regions.
-    site: { theme: 'bartik' },
+    site: { theme: 'stark' },
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
