@@ -5,6 +5,9 @@ dependencies:
   config:
     - config_pages.type.drupalpod_com
     - field.field.config_pages.drupalpod_com.field_site_name
+    - field.field.config_pages.drupalpod_com.field_social_drupal
+    - field.field.config_pages.drupalpod_com.field_social_github
+    - field.field.config_pages.drupalpod_com.field_social_twitter
 id: config_pages.drupalpod_com.default
 targetEntityType: config_pages
 bundle: drupalpod_com
@@ -17,5 +20,29 @@ content:
       link_to_entity: false
     third_party_settings: {  }
     weight: 0
+    region: content
+  field_social_drupal:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_social_github:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_social_twitter:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
     region: content
 hidden: {  }

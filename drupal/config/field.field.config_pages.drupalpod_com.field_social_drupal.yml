@@ -1,0 +1,19 @@
+uuid: 0f725d9f-3617-4d60-9732-624f3f0262dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.storage.config_pages.field_social_drupal
+id: config_pages.drupalpod_com.field_social_drupal
+field_name: field_social_drupal
+entity_type: config_pages
+bundle: drupalpod_com
+label: Drupal.org
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -12,7 +12,7 @@ export const state = () => ({
 export const mutations = {
   set: (state, data) => {
     state.site = data.site
-    // state.social = data.social
+    state.social = data.social
   },
 }
 
@@ -23,12 +23,12 @@ export const actions = {
     const data = {
       site: {
         name: entity.attributes.field_site_name
-      }
-      // social: {
-      //   drupal: entity.attributes.field_social_drupal,
-      //   github: entity.attributes.field_social_github,
-      //   twitter: entity.attributes.field_social_twitter,
-      // },
+      },
+      social: {
+        drupal: entity.attributes.field_social_drupal,
+        github: entity.attributes.field_social_github,
+        twitter: entity.attributes.field_social_twitter,
+      },
     }
     commit('set', data)
   },

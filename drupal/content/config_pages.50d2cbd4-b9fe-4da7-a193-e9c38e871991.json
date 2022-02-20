@@ -23,13 +23,24 @@
     ],
     "changed": [
         {
-            "value": "2022-02-19T05:54:15+00:00",
+            "value": "2022-02-20T04:45:53+00:00",
             "format": "Y-m-d\\TH:i:sP"
         }
     ],
     "field_site_name": [
         {
             "value": "DrupalPod"
+        }
+    ],
+    "field_social_drupal": [],
+    "field_social_github": [
+        {
+            "value": "https:\/\/github.com\/shaal\/DrupalPod"
+        }
+    ],
+    "field_social_twitter": [
+        {
+            "value": "https:\/\/twitter.com\/Drupal_Pod"
         }
     ]
 }
