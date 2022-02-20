@@ -121,7 +121,7 @@ export default {
       DP_MODULE_VERSION: model.version,
       DP_PATCH_FILE: undefined,
       DP_PROJECT_NAME: model.project.id,
-      DP_PROJECT_TYPE: undefined
+      DP_PROJECT_TYPE: model.project.id ? 'project_module' : undefined
     }).filter(([k, v]) => v).map(([k, v]) => `${k}=${v}`).join(','),
   },
 
