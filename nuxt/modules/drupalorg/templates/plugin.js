@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = 'https://www.drupal.org/api-d7'
+const baseUrl = '<%= options.baseUrl %>'
 
 export default (context, inject) => {
   inject('drupalorg', {

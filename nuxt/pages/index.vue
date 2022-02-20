@@ -1,5 +1,8 @@
 <template>
   <div class="container flex flex-col h-full items-center justify-center mx-auto">
+    <label class="label w-full">
+      <span class="label-text">Drupal project</span>
+    </label>
     <div
       class="form-control w-full"
       :class="{ 'input-group': model.project.id }"
@@ -43,6 +46,40 @@
       :nid="model.project.nid"
     />
 
+    <!-- Drupal settings -->
+    <div class="flex flex-row w-full">
+      <label class="label w-1/2">
+        <span class="label-text">Install profile</span>
+      </label>
+      <label class="label w-1/2">
+        <span class="label-text">Core version</span>
+      </label>
+    </div>
+    <div class="flex flex-row form-control input-group my-2 w-full">
+      <select
+        class="select select-bordered select-lg w-1/2"
+        v-model="model.profile"
+      >
+        <option
+          v-for="profile of profiles"
+          :key="profile"
+          :value="profile"
+          v-text="profile || '(none)'"
+        />
+      </select>
+      <select
+        class="select select-bordered select-lg w-1/2"
+        v-model="model.core"
+      >
+        <option
+          v-for="core of cores"
+          :key="core"
+          :value="core"
+          v-text="core"
+        />
+      </select>
+    </div>
+
     <!-- Start button -->
     <div class="form-control w-full">
       <a class="btn w-full" :href="href">Start DrupalPod</a>
@@ -56,12 +93,19 @@ import Vue from 'vue'
 
 export default {
   data: () => ({
+    // @TODO - Get these values from an API?
+    // @SEE https://www.drupal.org/api-d7/node.json?type=project_release&field_release_project=3060
+    cores: ['9.3.6', '10.0.x', '9.3.x', '9.2.x', '9.1.x', '9.0.x', '8.9.x'],
     loading: false,
     repo: 'https://github.com/shaal/drupalpod',
     model: {
+      core: '9.3.6',
+      profile: '',
       project: {},
       version: undefined,
     },
+    // @TODO - Get these values from an API?
+    profiles: ['', 'standard', 'demo_umami', 'minimal'],
     versions: {}
   }),
   computed: {
@@ -70,10 +114,10 @@ export default {
     placeholder: ({ model }) => model.project.title || 'Drupal project name',
 
     variables: ({ model }) => Object.entries({
-      DP_CORE_VERSION: undefined,
+      DP_CORE_VERSION: model.core,
       DP_ISSUE_BRANCH: undefined,
       DP_ISSUE_FORK: undefined,
-      DP_INSTALL_PROFILE: undefined,
+      DP_INSTALL_PROFILE: model.profile,
       DP_MODULE_VERSION: model.version,
       DP_PATCH_FILE: undefined,
       DP_PROJECT_NAME: model.project.id,
