@@ -16,7 +16,15 @@
 </template>
 
 <script>
+import DrupalPodConfig from '~/mixins/config'
+
 export default {
+  mixins: [DrupalPodConfig],
+
+  head: ({ config }) => ({
+    title: config.site.name
+  }),
+
   computed: {
     theme: () => 'stark'
   }
