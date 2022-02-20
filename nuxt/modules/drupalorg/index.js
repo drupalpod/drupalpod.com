@@ -1,30 +1,42 @@
 import axios from 'axios'
 import { resolve } from 'path'
 
-export default function (moduleOptions) {
+export default async function (moduleOptions = {}) {
   const self = this
-  this.nuxt.hook('build:before', async (nuxt, buildOptions) => {
-    // Get Modules data.
-    const url = 'https://www.drupal.org/api-d7/node.json?type=project_module'
-    const { data } = await axios.get(url)
 
-    // @TODO - Add support for pagination.
+  // Get Modules data.
+  let url = 'https://www.drupal.org/api-d7/node.json?type=project_module'
+  let { data } = await axios.get(url)
+  let { list } = data
+  // @TODO - This is currently limited to 5 pages worth of data.
+  //       - Need to implement filtering of queried data.
+  let i = 0
+  while (data.next && i < 5) {
+    i++
+    url = data.next
+    data = (await axios.get(url)).data
+    list = [...list, ...data.list]
+  }
 
-    const modules = Object.fromEntries(data.list.map((o) => [
-      o.field_project_machine_name,
-      {
-        nid: o.nid,
-        title: o.title,
-      }
-    ]))
+  // Add modules to lunr.
+  list.forEach((o) => {
+    const document = {
+      id: o.nid,
+      title: o.field_project_machine_name,
+      body: o.title
+    }
+    const meta = {
+      id: document.title,
+      nid: document.id,
+      title: document.body
+    }
+    this.nuxt.callHook('lunr:document', ({ document, meta }))
+  })
 
-    // Build plugin.
-    self.addPlugin({
-      src: resolve(__dirname, './templates/plugin.js'),
-      fileName: 'drupalorg.js',
-      options: {
-        modules
-      }
-    })
+  // Build plugin.
+  self.addPlugin({
+    src: resolve(__dirname, './templates/plugin.js'),
+    fileName: 'drupalorg.js',
+    options: {}
   })
 }

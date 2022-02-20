@@ -1,26 +1,31 @@
 <template>
   <div class="container flex flex-col h-full items-center justify-center mx-auto">
-    <!-- Project -->
-    <div class="form-control w-full">
-      <div class="flex input-group">
-        <select
-          class="flex-grow mb-2 select select-bordered select-lg"
-          v-model="model.DP_PROJECT_NAME"
-        >
-          <option disabled selected>Select a Drupal project</option>
-          <option
-            v-for="(value, key) of modules"
-            :key="key"
-            :value="key"
-            v-text="value"
-          />
-        </select>
+    <div
+      class="form-control w-full"
+      :class="{ 'input-group': model.project.id }"
+    >
+      <div class="flex my-2">
+        <!-- Project name -->
+        <div class="w-full">
+          <ProjectSearch :placeholder="placeholder">
+            <template #default="{ meta }">
+              <a v-text="meta.title" @click="setProject(meta)" />
+            </template>
+          </ProjectSearch>
+        </div>
 
+        <!-- Project version -->
         <select
-          class="mb-2 select select-bordered select-lg"
-          v-if="model.DP_PROJECT_NAME"
-          v-model="model.DP_MODULE_VERSION"
+          v-if="model.project.id && versions[model.project.id]"
+          class="select select-bordered select-lg"
+          v-model="model.version"
         >
+          <option
+            v-for="version of versions[model.project.id]"
+            :key="[model.project.id, version].join('--')"
+            :value="version"
+            v-text="version"
+          />
         </select>
       </div>
     </div>
@@ -33,31 +38,53 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   data: () => ({
     loading: false,
     repo: 'https://github.com/shaal/drupalpod',
     model: {
-      DP_CORE_VERSION: undefined,
-      DP_ISSUE_BRANCH: undefined,
-      DP_ISSUE_FORK: undefined,
-      DP_INSTALL_PROFILE: '',
-      DP_MODULE_VERSION: undefined,
-      DP_PATCH_FILE: undefined,
-      DP_PROJECT_NAME: undefined,
-      DP_PROJECT_TYPE: undefined
+      project: {},
+      version: undefined,
     },
     versions: {}
   }),
   computed: {
     href: ({ repo, variables }) => `https://gitpod.io/#${variables}/${repo}`,
-    modules: ({ $drupalorg }) => Object.fromEntries(Object.entries($drupalorg.modules).map(([k, v]) => [k, v.title])),
-    variables: ({ model }) => Object.entries(model).filter(([k, v]) => v).map(([k, v]) => `${k}=${v}`).join(','),
+
+    placeholder: ({ model }) => model.project.title || 'Drupal project name',
+
+    variables: ({ model }) => Object.entries({
+      DP_CORE_VERSION: undefined,
+      DP_ISSUE_BRANCH: undefined,
+      DP_ISSUE_FORK: undefined,
+      DP_INSTALL_PROFILE: undefined,
+      DP_MODULE_VERSION: model.version,
+      DP_PATCH_FILE: undefined,
+      DP_PROJECT_NAME: model.project.id,
+      DP_PROJECT_TYPE: undefined
+    }).filter(([k, v]) => v).map(([k, v]) => `${k}=${v}`).join(','),
   },
+
+  methods: {
+    setProject(meta) {
+      Vue.set(this.model, 'version', undefined)
+      Vue.set(this.model, 'project', meta)
+    },
+
+    setVersion(version) {
+      Vue.set(this.model, 'version', version)
+    }
+  },
+
   watch: {
-    async 'model.DP_PROJECT_NAME'() {
+    async 'model.project'() {
       this.loading = true
-      this.versions[this.model.DP_PROJECT_NAME] = await this.$drupalorg.getVersions(this.model.DP_PROJECT_NAME)
+      const versions = await this.$drupalorg.getVersions(this.model.project.nid)
+      Vue.set(this.versions, this.model.project.id, versions)
+
+      this.model.version = this.versions[this.model.project.id][0]
       this.loading = false
     }
   }
