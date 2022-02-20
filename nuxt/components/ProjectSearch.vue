@@ -19,7 +19,7 @@
     <ul
       v-show="showResults"
       ref="results"
-      class="absolute bg-white card card-bordered menu w-full text-secondary-content p-2 rounded-box -my-1 border-t-0 rounded-tl-none rounded-tr-none"
+      class="absolute bg-base-100 text-base-content card card-bordered menu w-full text-secondary-content p-2 rounded-box -my-1 border-t-0 rounded-tl-none rounded-tr-none z-50"
       tabIndex="-1"
       :aria-labelledby="`lunr-search${elementId}`"
       @keyup.enter="keyEnter"

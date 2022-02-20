@@ -21,7 +21,7 @@ export default async function (moduleOptions = {}) {
   // Add modules to lunr.
   list.forEach((o) => {
     const document = {
-      id: o.nid,
+      id: Number(o.nid),
       title: o.field_project_machine_name,
       body: o.title
     }

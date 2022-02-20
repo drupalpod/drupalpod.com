@@ -16,7 +16,7 @@
 
         <!-- Project version -->
         <select
-          v-if="model.project.id && versions[model.project.id]"
+          v-if="!loading && model.project.id && versions[model.project.id]"
           class="select select-bordered select-lg"
           v-model="model.version"
         >
@@ -27,9 +27,23 @@
             v-text="version"
           />
         </select>
+        <div
+          v-else-if="loading && model.project.id"
+          class="btn btn-lg loading"
+        >
+          Loading
+        </div>
+
       </div>
     </div>
 
+    <!-- Project card -->
+    <ProjectCard
+      v-if="model.project.id"
+      :nid="model.project.nid"
+    />
+
+    <!-- Start button -->
     <div class="form-control w-full">
       <a class="btn w-full" :href="href">Start DrupalPod</a>
       <p class="py-4" v-text="href" />
