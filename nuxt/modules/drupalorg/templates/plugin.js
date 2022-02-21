@@ -15,7 +15,7 @@ export default (context, inject) => {
       const url = `${baseUrl}/node.json?type=project_release&field_release_project=${nid}`
 
       const { data } = await axios.get(url)
-      return data.list.map((o) => o.field_release_version)
+      return data.list.map((o) => o.field_release_vcs_label)
     },
   })
 }
