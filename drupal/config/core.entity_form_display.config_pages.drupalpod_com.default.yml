@@ -1,0 +1,71 @@
+uuid: c0de70bc-c313-4246-9a6d-7f5da1a4dbb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.field.config_pages.drupalpod_com.field_site_name
+    - field.field.config_pages.drupalpod_com.field_social_drupal
+    - field.field.config_pages.drupalpod_com.field_social_github
+    - field.field.config_pages.drupalpod_com.field_social_twitter
+  module:
+    - field_group
+third_party_settings:
+  field_group:
+    group_social:
+      children:
+        - field_social_drupal
+        - field_social_github
+        - field_twitter
+        - field_social_twitter
+      label: Social
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+id: config_pages.drupalpod_com.default
+targetEntityType: config_pages
+bundle: drupalpod_com
+mode: default
+content:
+  field_site_name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_social_drupal:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_social_github:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_social_twitter:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  label: true

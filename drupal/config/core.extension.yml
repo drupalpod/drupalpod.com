@@ -10,6 +10,7 @@ module:
   color: 0
   comment: 0
   config: 0
+  config_pages: 0
   contact: 0
   contextual: 0
   datetime: 0
@@ -19,6 +20,7 @@ module:
   dynamic_page_cache: 0
   editor: 0
   field: 0
+  field_group: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -56,6 +58,6 @@ module:
   views: 10
   standard: 1000
 theme:
-  bartik: 0
-  seven: 0
+  stark: 0
+  claro: 0
 profile: standard

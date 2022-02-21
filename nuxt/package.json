@@ -1,12 +1,12 @@
 {
-  "name": "quickstart-druxt-site",
-  "version": "1.0.0",
+  "name": "drupalpod-com",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "nuxt",
-    "build": "nuxt build",
+    "generate": "nuxt generate",
     "start": "nuxt start",
-    "generate": "nuxt generate"
+    "deploy": "npx netlify-cli deploy -d ./dist"
   },
   "dependencies": {
     "core-js": "3.21.1",
@@ -14,7 +14,14 @@
     "nuxt": "2.15.8"
   },
   "devDependencies": {
-    "@nuxtjs/storybook": "4.2.0",
+    "@nuxtjs/lunr-module": "^0.3.2",
+    "@nuxtjs/storybook": "^4.2.0",
+    "@nuxtjs/tailwindcss": "^5.0.0-4",
+    "@storybook/addon-docs": "^6.3.12",
+    "@tailwindcss/typography": "^0.5.2",
+    "daisyui": "^2.0.9",
+    "ellipsize": "^0.5.1",
+    "netlify-cli": "^9.6.5",
     "opn": "6.0.0",
     "postcss": "8.4.6"
   }

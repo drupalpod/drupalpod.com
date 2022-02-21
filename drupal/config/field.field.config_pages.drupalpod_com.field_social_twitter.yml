@@ -1,0 +1,21 @@
+uuid: bf8a7184-77d9-4f1a-b263-ceb955798dc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.storage.config_pages.field_social_twitter
+id: config_pages.drupalpod_com.field_social_twitter
+field_name: field_social_twitter
+entity_type: config_pages
+bundle: drupalpod_com
+label: Twitter
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 'https://twitter.com/Drupal_Pod'
+default_value_callback: ''
+settings: {  }
+field_type: string

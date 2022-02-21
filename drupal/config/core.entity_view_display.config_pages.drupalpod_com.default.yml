@@ -1,0 +1,48 @@
+uuid: bbed49e4-0f9f-4a11-bc2a-38da6b6bb36d
+langcode: en
+status: true
+dependencies:
+  config:
+    - config_pages.type.drupalpod_com
+    - field.field.config_pages.drupalpod_com.field_site_name
+    - field.field.config_pages.drupalpod_com.field_social_drupal
+    - field.field.config_pages.drupalpod_com.field_social_github
+    - field.field.config_pages.drupalpod_com.field_social_twitter
+id: config_pages.drupalpod_com.default
+targetEntityType: config_pages
+bundle: drupalpod_com
+mode: default
+content:
+  field_site_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_social_drupal:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_social_github:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_social_twitter:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden: {  }
